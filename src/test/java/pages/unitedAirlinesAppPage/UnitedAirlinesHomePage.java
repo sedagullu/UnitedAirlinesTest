@@ -23,11 +23,17 @@ public class UnitedAirlinesHomePage {
     @FindBy(xpath = "(//fieldset[@name='flightType']//span)[4]")
     public WebElement oneWayButton;
 
-    @FindBy(xpath = "//input[@type='checkbox'][1]")
+    @FindBy(css = "#award")
     public WebElement bookWithMilesCheckBox;
 
-    @FindBy(xpath = "//input[@type='checkbox'][2]")
+    @FindBy(css = "label[for='award']")
+    public WebElement bookWithMileslLabel;
+
+    @FindBy(css = "#flexDatesLabel")
     public WebElement flexibleDatesCheckBox;
+
+    @FindBy(css = "label[for='flexibleDates']")
+    public WebElement flexibleDatesLabel;
 
     @FindBy(xpath = "//input[@type='text'][1]")
     public WebElement fromWhereInput;
@@ -38,6 +44,12 @@ public class UnitedAirlinesHomePage {
     @FindBy(id = "DepartDate")
     public WebElement dateInput;
 
+    @FindBy(xpath = "//button[@aria-label='Move backward to switch to the previous month.']")
+    public WebElement previousArrowIcon;
+
+    @FindBy(xpath = "//*[@aria-label='Sunday, January 30, 2022']")
+    public WebElement Jan30th;
+
     @FindBy(xpath = "//button[@aria-haspopup='dialog']")
     public WebElement travelSelector;
 
@@ -46,13 +58,13 @@ public class UnitedAirlinesHomePage {
 
     @FindBy(id = "cabinType")
     public WebElement cabinType;
-
+//
     @FindBy(xpath = "//li[@id='cabinType_item-2']")
     public WebElement businessOrFirst;
 
     @FindBy(xpath = "//button[@type='submit']//span")
     public WebElement findFlightsButton;
 
-    @FindBy(xpath = "//h2[1]")
+    @FindBy(xpath = "//h2/div")
     public WebElement departureheading;
 }

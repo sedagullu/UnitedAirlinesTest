@@ -83,21 +83,24 @@ Then validate both checkboxes are deselected
     public void ValidateBookWithMilesAndFlexibleDatesCheckBoxes() {
         driver.get(ConfigReader.getProperty("unitedAirlinesURL"));
 
-        Assert.assertTrue(unitedAirlinesHomePage.bookWithMilesCheckBox.isDisplayed());
+        Assert.assertTrue(unitedAirlinesHomePage.bookWithMileslLabel.isDisplayed());
         Assert.assertTrue(unitedAirlinesHomePage.bookWithMilesCheckBox.isEnabled());
         Assert.assertFalse(unitedAirlinesHomePage.bookWithMilesCheckBox.isSelected());
 
-        Assert.assertTrue(unitedAirlinesHomePage.flexibleDatesCheckBox.isDisplayed());
+        Assert.assertTrue(unitedAirlinesHomePage.flexibleDatesLabel.isDisplayed());
         Assert.assertTrue(unitedAirlinesHomePage.flexibleDatesCheckBox.isEnabled());
         Assert.assertFalse(unitedAirlinesHomePage.flexibleDatesCheckBox.isSelected());
 
+        Waiter.pause(2);
         unitedAirlinesHomePage.bookWithMilesCheckBox.click();
+        Waiter.pause(2);
         unitedAirlinesHomePage.flexibleDatesCheckBox.click();
-        Waiter.pause(4);
+        Waiter.pause(5);
         Assert.assertTrue(unitedAirlinesHomePage.bookWithMilesCheckBox.isSelected());
         Assert.assertTrue(unitedAirlinesHomePage.flexibleDatesCheckBox.isSelected());
 
         unitedAirlinesHomePage.bookWithMilesCheckBox.click();
+        Waiter.pause(2);
         unitedAirlinesHomePage.flexibleDatesCheckBox.click();
         Waiter.pause(4);
         Assert.assertFalse(unitedAirlinesHomePage.bookWithMilesCheckBox.isSelected());
@@ -125,19 +128,25 @@ Then validate both checkboxes are deselected
         unitedAirlinesHomePage.toWhereInput.sendKeys(ExpectedTextsForUnitedAirlinesApp.toWhere);
         Waiter.pause(4);
         unitedAirlinesHomePage.dateInput.clear();
+        Waiter.pause(3);
+        unitedAirlinesHomePage.previousArrowIcon.click();
+        unitedAirlinesHomePage.previousArrowIcon.click();
+        unitedAirlinesHomePage.Jan30th.click();
 
         unitedAirlinesHomePage.travelSelector.click();
         unitedAirlinesHomePage.travelerPlusButton.click();
-        unitedAirlinesHomePage.businessOrFirst.click();
+        Waiter.pause(5);
+        unitedAirlinesHomePage.cabinType.click();
         Waiter.pause(4);
+        unitedAirlinesHomePage.businessOrFirst.click();
+        Waiter.pause(3);
         unitedAirlinesHomePage.findFlightsButton.click();
 
         String mainWindow = driver.getWindowHandle();
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(mainWindow)) driver.switchTo().window(windowHandle);
         }
-        String mainWindowHandle = driver.getWindowHandle();
-        driver.switchTo().window(mainWindowHandle);
+
         Assert.assertEquals(unitedAirlinesHomePage.departureheading.getText(), ExpectedTextsForUnitedAirlinesApp.departureMessage);
 
     }
